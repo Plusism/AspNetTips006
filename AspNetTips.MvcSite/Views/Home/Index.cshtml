@@ -1,8 +1,59 @@
 ﻿@{
 	ViewData["Title"] = "Home Page";
 }
+<style>
+	section {
+		margin-top: 50px;
+	}
 
+	dl {
+		margin: 20px;
+	}
+
+	dd {
+		margin-left: 1rem;
+	}
+
+		dd + dt {
+			margin-top: 20px;
+		}
+</style>
 <div class="text-center">
-	<h1 class="display-4">Welcome</h1>
-	<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<div>
+	<h1>HostEnvironmentExtension</h1>
+	<p>HostEnvironment に<strong>アプリケーションルートからの仮想パスを物理パスに変換する</strong>拡張メソッドを追加します。</p>
+</div>
+
+<section>
+	<h2>MapContentRootPath()</h2>
+	<p>
+		アプリケーションルート配下の物理パスを取得します。
+	</p>
+	<dl>
+		<dt>仮想パス</dt>
+		<dd>./appsettings.json</dd>
+		<dt>物理パス <small>(参考例)</small></dt>
+		<dd>D:\Repos\AspNetTips006\AspNetTips.MvcSite\appsettings.json</dd>
+	</dl>
+	<p>
+		「./appsettings.json」はサーバー上に <strong>@(ViewBag.Result2)</strong>
+	</p>
+</section>
+
+<section>
+	<h2>MapWebRootPath()</h2>
+	<p>
+		wwwroot 配下の物理パスを取得します。
+	</p>
+	<dl>
+		<dt>仮想パス</dt>
+		<dd>~/pdf/sample.pdf</dd>
+		<dt>物理パス <small>(参考例)</small></dt>
+		<dd>D:\Repos\AspNetTips006\AspNetTips.MvcSite\wwwroot\pdf\sample.pdf</dd>
+	</dl>
+	<p>
+		「~/pdf/sample.pdf」はサーバー上に <strong>@(ViewBag.Result1)</strong>
+	</p>
+</section>

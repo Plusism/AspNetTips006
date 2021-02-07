@@ -1,25 +1,29 @@
 ﻿using AspNetTips.MvcSite.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AspNetTips.MvcSite.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
+		private readonly IWebHostEnvironment _env;
 
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController(IWebHostEnvironment env)
 		{
-			_logger = logger;
+			_env = env;
 		}
 
 		public IActionResult Index()
 		{
+			var target1 = "~/pdf/sample.pdf";
+			var path1 = _env.MapWebRootPath(target1);
+			ViewBag.Result1 = System.IO.File.Exists(path1) ? "存在します" : "存在しません";
+
+			var target2 = "./appsettings.json";
+			var path2 = _env.MapContentRootPath(target2);
+			ViewBag.Result2 = System.IO.File.Exists(path2) ? "存在します" : "存在しません";
+
 			return View();
 		}
 
