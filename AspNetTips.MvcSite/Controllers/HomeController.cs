@@ -16,13 +16,13 @@ namespace AspNetTips.MvcSite.Controllers
 
 		public IActionResult Index()
 		{
-			var target1 = "~/pdf/sample.pdf";
-			var path1 = _env.MapWebRootPath(target1);
+			var target1 = "/appsettings.json";
+			var path1 = _env.MapContentRootPath(target1);
 			ViewBag.Result1 = System.IO.File.Exists(path1) ? "存在します" : "存在しません";
 
-			var target2 = "./appsettings.json";
-			var path2 = _env.MapContentRootPath(target2);
-			ViewBag.Result2 = System.IO.File.Exists(path2) ? "存在します" : "存在しません";
+			var target2 = "~/pdf/sample.pdf";
+			var path2 = _env.MapWebRootPath(target2);
+			ViewBag.Result1 = System.IO.File.Exists(path2) ? "存在します" : "存在しません";
 
 			return View();
 		}

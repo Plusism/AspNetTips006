@@ -6,17 +6,6 @@ namespace Microsoft.AspNetCore.Hosting
 	public static class HostEnvironmentExtension
 	{
 		/// <summary>
-		/// 仮想ファイルパスを物理ファイルパスに変換します
-		/// </summary>
-		/// <param name="virtualPath">仮想ファイルパス</param>
-		/// <returns></returns>
-		private static string GetPhysicalPath(string virtualPath)
-		{
-			var result = Regex.Replace(virtualPath, @"^~/|^./|^/", string.Empty).Replace("/", @"\");
-			return result;
-		}
-
-		/// <summary>
 		/// ファイルの相対パスを物理パス区切りに変換して ContentRootPath と連結して返します
 		/// </summary>
 		/// <param name="env">IWebHostEnvironment を拡張します</param>
@@ -39,6 +28,17 @@ namespace Microsoft.AspNetCore.Hosting
 		{
 			var path = GetPhysicalPath(filePath);
 			var result = Path.Combine(env.WebRootPath, path);
+			return result;
+		}
+
+		/// <summary>
+		/// 仮想ファイルパスを物理ファイルパスに変換します
+		/// </summary>
+		/// <param name="virtualPath">仮想ファイルパス</param>
+		/// <returns></returns>
+		private static string GetPhysicalPath(string virtualPath)
+		{
+			var result = Regex.Replace(virtualPath, @"^~/|^/", string.Empty).Replace("/", @"\");
 			return result;
 		}
 	}
