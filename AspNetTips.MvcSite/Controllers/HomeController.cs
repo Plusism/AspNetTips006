@@ -22,7 +22,7 @@ namespace AspNetTips.MvcSite.Controllers
 
 			var target2 = "~/pdf/sample.pdf";
 			var path2 = _env.MapWebRootPath(target2);
-			ViewBag.Result1 = System.IO.File.Exists(path2) ? "存在します" : "存在しません";
+			ViewBag.Result2 = System.IO.File.Exists(path2) ? "存在します" : "存在しません";
 
 			return View();
 		}
